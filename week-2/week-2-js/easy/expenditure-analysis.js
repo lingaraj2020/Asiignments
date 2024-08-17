@@ -14,7 +14,37 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  const result=[];
+  for(let i=0;i<transactions.length;i++){
+    const transaction=transactions[i];
+    const {category,price}=transaction;
+
+    let found=false;
+    for(let j=0;j<result.length;j++){
+      if(result[j].category==category){
+        result[j].totalSpent+=price;
+        found=true;
+        break;
+      }
+    }
+
+    if(!found){
+      result.push({category:category,totalSpent:price});
+    }
+  }
+ 
+  // for(const transaction of transactions){
+  //   const {category,price}=transaction;
+
+  //   const categoryobj=result.find(item=>item.category==category);
+  //   if(categoryobj){
+  //     categoryobj.totalSpent+=price;
+  //   }
+  //   else{
+  //     result.push({category,totalSpent:price});
+  //   }
+  // }
+  return result;
 }
 
 module.exports = calculateTotalSpentByCategory;

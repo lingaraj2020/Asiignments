@@ -42,7 +42,7 @@ describe('Calculator', () => {
 		calc.divide(4);
 		expect(calc.getResult()).toBe(3);
 
-		expect(() => calc.divide(0)).toThrow(Error);
+		expect(() => calc.divide(0)).toThrow('can not divide by zero');
 		expect(calc.getResult()).toBe(3);
 	});
 
